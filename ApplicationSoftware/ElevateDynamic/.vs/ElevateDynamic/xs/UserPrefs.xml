@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{5304666B-CC0F-7CC5-175A-A502A76A80BE}|">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="Assets/Scripts/Play.cs" Line="13" Column="26" />
+      <File FileName="Assets/Scripts/WriteMatrix.cs" Line="55" Column="65" />
+      <File FileName="Assets/Scripts/ShaderControl.cs" Line="63" Column="53" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="affec4bb-246b-4468-98a3-dfb43fd3474d" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
