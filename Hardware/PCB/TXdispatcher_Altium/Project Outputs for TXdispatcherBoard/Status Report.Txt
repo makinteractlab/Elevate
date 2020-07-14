@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [TXdispatcherBoard.PcbDoc]
+   Generated File[TXdispatcherBoard.TXT]
+   Generated File[TXdispatcherBoard.LDP]
+   Generated File[TXdispatcherBoard.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 1:09:46 PM On 1/20/2020

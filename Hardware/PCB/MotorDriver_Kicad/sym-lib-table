@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name SWnewLib)(type Legacy)(uri ${KIPRJMOD}/SWnewLib.lib)(options "")(descr ""))
+  (lib (name motorDriver_pcb-rescue)(type Legacy)(uri ${KIPRJMOD}/motorDriver_pcb-rescue.lib)(options "")(descr ""))
+)

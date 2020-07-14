@@ -1,0 +1,2 @@
+{ "" "" "" "TimeQuest Timing Analyzer does not support the analysis of latches as synchronous elements for the currently selected device family." {  } {  } 0 335095 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Parallel compilation is not licensed and has been disabled" {  } {  } 0 20028 "" 0 0 "Quartus II" 0 -1 0 ""}
