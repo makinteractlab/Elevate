@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: ce9e56c420eb241dda21d6b4e3d5ef94
+timeCreated: 1530135810
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: _Rock_1:Group52617
+    100002: _Rock_2:default1
+    100004: _Rock_2:default2
+    100006: _Rock_2:Group41972
+    100008: _Rock_2:transform1
+    100010: _Rock_2:transform2
+    100012: _Rock_2:transform3
+    100014: _Rock_2:transform4
+    100016: _Rock_2:transform5
+    100018: _Rock_2:transform6
+    100020: _Rock_2:transform7
+    100022: _Rock_2:transform8
+    100024: _Rock_2:transform9
+    100026: _Rock_3:Group21385
+    100028: _Rock_3:Group9124
+    100030: _Rock_4:Group32924
+    100032: _Rock_5:RetopoGroup1
+    100034: //RootNode
+    100036: default1
+    100038: LOW_2_Rock_6:Group46169
+    100040: Boulder_large
+    100042: Boulder_medium
+    100044: Boulder_small
+    100046: Boulder_tiny
+    100048: Spear_huge
+    100050: Spear_large
+    100052: Spear_medium
+    100054: Spear_small
+    100056: Spear_tiny
+    400000: _Rock_1:Group52617
+    400002: _Rock_2:default1
+    400004: _Rock_2:default2
+    400006: _Rock_2:Group41972
+    400008: _Rock_2:transform1
+    400010: _Rock_2:transform2
+    400012: _Rock_2:transform3
+    400014: _Rock_2:transform4
+    400016: _Rock_2:transform5
+    400018: _Rock_2:transform6
+    400020: _Rock_2:transform7
+    400022: _Rock_2:transform8
+    400024: _Rock_2:transform9
+    400026: _Rock_3:Group21385
+    400028: _Rock_3:Group9124
+    400030: _Rock_4:Group32924
+    400032: _Rock_5:RetopoGroup1
+    400034: //RootNode
+    400036: default1
+    400038: LOW_2_Rock_6:Group46169
+    400040: Boulder_large
+    400042: Boulder_medium
+    400044: Boulder_small
+    400046: Boulder_tiny
+    400048: Spear_huge
+    400050: Spear_large
+    400052: Spear_medium
+    400054: Spear_small
+    400056: Spear_tiny
+    2100000: roche2
+    2100002: roche3
+    2100004: roche4
+    2100006: _2_Rock_5
+    2100008: _2_Rock_4
+    2100010: roche1
+    2100012: _2_Rock_3
+    2100014: _2_Rock_2
+    2100016: _2_Rock_1
+    2100018: lambert1
+    2300000: _Rock_2:default2
+    2300002: Boulder_large
+    2300004: Boulder_medium
+    2300006: Boulder_small
+    2300008: Boulder_tiny
+    2300010: Spear_huge
+    2300012: Spear_large
+    2300014: Spear_medium
+    2300016: Spear_small
+    2300018: Spear_tiny
+    3300000: _Rock_2:default2
+    3300002: Boulder_large
+    3300004: Boulder_medium
+    3300006: Boulder_small
+    3300008: Boulder_tiny
+    3300010: Spear_huge
+    3300012: Spear_large
+    3300014: Spear_medium
+    3300016: Spear_small
+    3300018: Spear_tiny
+    4300000: _Rock_2:default2
+    4300002: Boulder_medium
+    4300004: Boulder_small
+    4300006: Boulder_tiny
+    4300008: Spear_tiny
+    4300010: Spear_small
+    4300012: Boulder_large
+    4300014: Spear_medium
+    4300016: Spear_large
+    4300018: Spear_huge
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
