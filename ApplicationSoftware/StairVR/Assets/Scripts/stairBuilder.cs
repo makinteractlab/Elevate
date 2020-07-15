@@ -5,12 +5,12 @@ using UnityEngine;
 public class stairBuilder : MonoBehaviour
 {
     int[,] heightPerUnit = new int[20, 60];
-    public int  width, height, length, stepNum;
+    public int  length, height, width, stepNum;
     float positionX , positionZ;
 
-    public void changingWidth(float w)
+    public void changinglength(float l)
     {
-        width = (int)w;
+        length = (int)l;
     }
 
     public void changingHeight(float h)
@@ -18,9 +18,9 @@ public class stairBuilder : MonoBehaviour
         height = (int)h;
     }
 
-    public void changingLength(float l)
+    public void changingwidth(float w)
     {
-        length = (int)l;
+        width = (int)w;
     }
 
     public void changingStepNumber(float n)
@@ -33,13 +33,16 @@ public class stairBuilder : MonoBehaviour
         positionX = 0;
         positionZ = 0;
         // for (int i = 0; i < 10; i++)
-        //     stairMaker.MakeStair(width, height, length, stepNum, i);
+        //     stairMaker.MakeStair(length, height, width, stepNum, i);
     }
 
     void Update()
     {
         for (int i = 0; i < 10; i++)
-            stairMaker.changeStair(positionX, positionZ, width, height, length, stepNum, i);
+            stairMaker.changeStair(positionX, positionZ, length, height, width, stepNum, i);
+
+        backgroundBuilder.changeHighEnvironment(positionX, positionZ, height);
+        backgroundBuilder.changeLowEnvironment(positionX, positionZ);
     }
 
     public void stairPositionSetting()

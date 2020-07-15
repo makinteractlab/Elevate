@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.stairvr.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\MAKinteract\\Documents\\StairVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\MAKinteract\\Desktop\\GIT\\Elevate\\ApplicationSoftware\\StairVR\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "StairVR [Testing]"
