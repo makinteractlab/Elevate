@@ -7,6 +7,8 @@ public class stairBuilder : MonoBehaviour
     int[,] heightPerUnit = new int[20, 60];
     public int  length, height, width, stepNum;
     float positionX , positionZ;
+    stairToJson stairToJson = new stairToJson();
+    public Play play;
 
     public void changinglength(float l)
     {
@@ -26,6 +28,12 @@ public class stairBuilder : MonoBehaviour
     public void changingStepNumber(float n)
     {
         stepNum = (int)n;
+    }
+    
+    public void playStart()
+    {
+        stairToJson.stairDraw(length, height, width, stepNum);
+        play.play();
     }
 
     void Start()

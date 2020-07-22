@@ -246,8 +246,7 @@ class PlayMatrix
             else
             {
                 totalBoardData.board_data_list.Clear();
-                totalBoardData.board_data_list = new List<Board_Data>(nextBoardData.board_data_list);
-                //for (int i = 0; i < nextBoardData.board_data_list.Count; i++) 
+                totalBoardData.board_data_list = new List<Board_Data>(nextBoardData.board_data_list); 
                 nextPlay = false;
             }
             makeMatrix(); // about total board data
@@ -258,6 +257,8 @@ class PlayMatrix
                 if (j != 0)
                 {
                     stepperMove(j);
+                    string s = "{\"id\":" + j / 4 + ",\"c\":\"on\"}\n";
+                    LockingSerial.Write(s);
                     yield return new WaitForSeconds(delayTime1 * blocksToGo[j] / 1000f);
                 }
                 if(j % 4 == 0 && lockingChecker[j / 4])
