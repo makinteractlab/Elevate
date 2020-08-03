@@ -1,101 +1,148 @@
-int hallSensor1 = A0;
-int switchPin1 = 8;
-int motorA1Pin = 3;
-int motorA2Pin = 2;
+const int hallSensor1 = A6;
 
-bool one_numChecker = true;
-int one_val = LOW;
-int one_hallVal = 0;
-int one_stepCounter;
-bool one_isPosition;
-bool one_raisingChecker = false;
-bool one_isPlay = false;
-int one_playChecker = 3;
+bool M1_numChecker = true;
+int M1_val = LOW;
+int M1_hallVal = 0;
+int M1_stepCounter;
+bool M1_isPosition;
+bool M1_raisingChecker = false;
+bool M1_isPlay = false;
+int M1_magnetState = 0;
+int M1_playChecker = 3;
 
-void one_moveDown(){
-  digitalWrite(motorA1Pin, HIGH);
-  digitalWrite(motorA2Pin, LOW);
+void M1_moveDown(){
+  digitalWrite(M1APin, LOW);
+  digitalWrite(M1BPin, HIGH);
 }
 
-void one_moveUp(){
-  digitalWrite(motorA1Pin, LOW);
-  digitalWrite(motorA2Pin, HIGH);
+void M1_moveUp(){
+  digitalWrite(M1APin, HIGH);
+  digitalWrite(M1BPin, LOW);
 }
 
-void one_moveStop(){
-  digitalWrite(motorA1Pin, LOW);
-  digitalWrite(motorA2Pin, LOW);
+void M1_moveStop(){
+  digitalWrite(M1APin, LOW);
+  digitalWrite(M1BPin, LOW);
 }
 
-void one_moveHome(){
-  if(one_val == LOW)one_moveDown();
-  if(one_val == HIGH)one_moveStop();
+void M1_moveHome(){
+  if(M1_val == LOW)M1_moveDown();
+  if(M1_val == HIGH)M1_moveStop();
 }
 
-bool one_hallChecker(){
-  int one_hallVal = one_hallValue();
-  if(one_hallVal <= 300) return true; //Serial.println("oddNum");
-  if(one_hallVal >= 650) return false; //Serial.println("evenNum");
+void M1_magnetOn(){
+    digitalWrite(MAG1Pin, HIGH);
 }
 
-void one_homeChecker(){
-  one_val =  digitalRead(switchPin1);
+void M1_magnetOff(){
+    digitalWrite(MAG1Pin, LOW);
+}
 
-  if(one_val == HIGH){
+bool M1_hallChecker(){
+  int M1_hallVal = M1_hallValue();
+  //minimun value is 350 for id 4, 10 else 400
+  if(M1_hallVal <= 350) return true; //Serial.println("oddNum");
+  if(M1_hallVal >= 620) return false; //Serial.println("evenNum");
+  if(M1_stepCounter % 2 == 1) return true;
+  return false;
+}
+
+void M1_homeChecker(){
+  M1_val =  digitalRead(S1Pin);
+
+  if(M1_val == HIGH){
     //Serial.println("home");
-    one_stepCounter = 1;
-    one_isPosition = true;
-    one_raisingChecker = true;
+    M1_stepCounter = 1;
+    M1_isPosition = true;
+    M1_raisingChecker = true;
   }
 }
 
-int one_hallValue(){
-    one_hallVal = analogRead(hallSensor1);
-    return one_hallVal;
+int M1_hallValue(){
+    M1_hallVal = analogRead(hallSensor1);
+    return M1_hallVal;
 }
 
-void one_stepMove(int one_stepNum){
-  one_homeChecker();
-  if(!one_raisingChecker){
-     one_moveHome();
+void M1_stepMove(int M1_stepNum){
+  M1_homeChecker();
+  if(!M1_raisingChecker){
+     M1_moveHome();
   }
   else{
-     one_moveUp();
-    bool one_hallVal = one_hallChecker();
-    if(one_isPosition != one_hallVal){
-       one_stepCounter++;
-       one_isPosition = one_hallVal;
-       //Serial.println(one_stepCounter);
+     M1_moveUp();
+    bool M1_hallVal = M1_hallChecker();
+    if(M1_isPosition != M1_hallVal){
+       M1_stepCounter++;
+       M1_isPosition = M1_hallVal;
     }
-    if(one_stepCounter == one_stepNum){
-       one_raisingChecker = false;
+    if(M1_stepCounter == M1_stepNum){
+       M1_raisingChecker = false;
     }
   }
 }
 
 // when we give the input, we have to change playChecker = 0;
-void one_play(int one_stepNum){
-  if(one_playChecker < 3 && one_stepNum > 1) {
-    one_stepMove(one_stepNum);
-    if(one_isPlay != one_raisingChecker){
-      one_playChecker++;
-      one_isPlay = one_raisingChecker;
+void M1_play(int M1_stepNum, int M1_previousNum){
+  if(M1_stepNum == M1_previousNum){
+    M1_playChecker = 3;
+  }
+  else if(M1_stepNum < M1_previousNum){
+    if(M1_playChecker < 3 && M1_stepNum > 1) {
+      if(M1_magnetState == 1) M1_stepMove(M1_previousNum + 1);
+      else M1_stepMove(M1_stepNum);
+      if(M1_isPlay != M1_raisingChecker){
+        M1_playChecker++;
+        if(M1_playChecker == 1 && M1_magnetState == 0){
+          M1_magnetState ++;
+          M1_magnetOn();
+        }
+        if(M1_playChecker == 3 && M1_magnetState == 1){
+          M1_playChecker = 1;
+          M1_magnetState++;
+          M1_magnetOff();
+        }
+        M1_isPlay = M1_raisingChecker;
+      }
     }
+    if(M1_playChecker < 3 && M1_stepNum == 1) {
+      M1_stepMove(M1_previousNum + 1);
+      if(M1_isPlay != M1_raisingChecker){
+        M1_playChecker++;
+        if(M1_playChecker == 1 && M1_magnetState == 0){
+          M1_magnetState ++;
+          M1_magnetOn();
+        }
+        if(M1_playChecker == 3 && M1_magnetState == 1){
+          M1_magnetState++;
+          M1_magnetOff();
+        }
+        M1_isPlay = M1_raisingChecker;
+      }
+    }
+    else M1_moveStop();
   }
-  else if(one_playChecker < 3 && one_stepNum == 1) {
-    one_playChecker = 3;
-    one_moveStop();
+  else{
+    if(M1_playChecker < 3 && M1_stepNum > 1) {
+      M1_stepMove(M1_stepNum);
+      if(M1_isPlay != M1_raisingChecker){
+        M1_playChecker++;
+        M1_isPlay = M1_raisingChecker;
+      }
+    }
+    else if(M1_playChecker < 3 && M1_stepNum == 1) {
+      M1_playChecker = 3;
+    }
+    else M1_moveStop();
   }
-  else one_moveStop();
-  //Serial.println(one_playChecker);
 }
 
-void one_reset(){
-  one_playChecker = 0;
-  one_isPlay = false;
-  one_raisingChecker = false;
+void M1_reset(){
+  M1_magnetState = 0;
+  M1_playChecker = 0;
+  M1_isPlay = false;
+  M1_raisingChecker = false;
 }
 
-int one_playCheck(){
-  return one_playChecker;
+int M1_playCheck(){
+  return M1_playChecker;
 }
