@@ -28,11 +28,4 @@ public class PlayScriptGuide : MonoBehaviour
         if (myPlay.isReady()) Debug.Log("It is ready");
         else Debug.Log("It is Playing now");
     }
-
-    //example of getTimeleft
-    void useGetImeLeft()
-    {
-        int time = myPlay.getTimeleft();
-        Debug.Log(time + "sec left");
-    }
 }
