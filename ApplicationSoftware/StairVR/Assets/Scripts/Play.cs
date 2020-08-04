@@ -116,7 +116,7 @@ class PlayMatrix
     public int playOrderLength;
     ArrayList playOrderList;
 
-    private int delayTime1 = 950; // row speed delay servo
+    private int delayTime1 = 1100; // row speed delay servo
     // private int delayTime2 = 300; // pin up speed delay motorUp
     // private int delayTime3 = 400; // pin down speed delay motorDown
     private int delayTime4 = 300; // locking
