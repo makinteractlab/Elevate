@@ -1425,8 +1425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c6d2e95a802db45bde8110c106e16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoardComPort: COM7
-  LockingComPort: COM6
+  BoardComPort: COM9
+  LockingComPort: COM10
   baudRate: 115200
   mapWidth: 20
   mapLength: 60

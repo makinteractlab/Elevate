@@ -9,8 +9,8 @@ using Newtonsoft.Json.Linq;
 
 public class stairToJson : MonoBehaviour
 {
-    Total_Board_Data totalBoardData;
-    List<Board_Data> board_data_list = new List<Board_Data>();
+    Board_Data BoardData;
+    List<Pin_Data> board_data_list = new List<Pin_Data>();
     JsonSerializerSettings setting = new JsonSerializerSettings();
     
     public void stairDraw(int x, int y, int z, int num)
@@ -38,11 +38,11 @@ public class stairToJson : MonoBehaviour
                         }
                     }
 
-                    board_data_list.Add(new Board_Data(i, j, height));
+                    board_data_list.Add(new Pin_Data(i, j, height));
                 }
-        totalBoardData = new Total_Board_Data(20, 60, board_data_list);
+        BoardData = new Board_Data(20, 60, board_data_list);
 
-        string JsonBoardData = JsonConvert.SerializeObject(totalBoardData, setting);
+        string JsonBoardData = JsonConvert.SerializeObject(BoardData, setting);
         File.WriteAllText(Application.dataPath + "/Resources/MatrixData/currentMatrix.json", JsonBoardData);
     }
 

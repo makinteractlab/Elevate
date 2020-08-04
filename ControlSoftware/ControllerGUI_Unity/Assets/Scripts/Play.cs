@@ -9,8 +9,8 @@ using System.IO.Ports;
 public class Play : MonoBehaviour
 {
     [Header("Port Setting")]
-    public string BoardComPort = "COM7";
-    public string LockingComPort = "COM6";
+    public string BoardComPort;
+    public string LockingComPort;
     public int baudRate = 115200;
 
     [Header("Map Setting")]
