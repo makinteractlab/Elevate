@@ -92,11 +92,11 @@ void moveBackward(int motorStep){
 }
 
 void moveForwardOneBlock(){
-  moveForward(2083);
+  moveForward(2090);
 }
 
 void moveBackwardOneBlock(){
-  moveBackward(2083);
+  moveBackward(2090);
 }
 
 void moveHome(){
