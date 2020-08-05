@@ -179,6 +179,17 @@ function toolUpdate() {
 
   // we need this to have realtime widget preview when adjusting
   updateSelectedObjects();
+
+}
+
+// prevent from losing creation when switching tools
+function toolUpdateSave() {
+  deselectAll();
+  if (centeredObject != null) {
+    centeredObject.dispose;
+    centeredObject = null;
+  }
+  toolUpdate();
 }
 
 function reset() {
@@ -448,9 +459,6 @@ function isInRect(originPos, targetPos) {
   return -1;
 }
 
-// run everytime user changes tools
-// usually just deselect everything
-// but for widgets, we need to update the selected pins for previewing
 function updateSelectedObjects() {
   if (selectedObjects != null && centeredObject != null) {
     resetSelectedObjects();
@@ -461,8 +469,6 @@ function updateSelectedObjects() {
     } else if (tool == 4) {
       updateTexturePreview(centeredObject, selected_color);
     }
-  } else {
-    deselectAll();
   }
   render();
 }
