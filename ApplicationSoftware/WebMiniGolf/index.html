@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mini-golf Builder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/marx.css">
+  </head>
+  <body>
+
+    <div id="widget-panel">
+
+      <h2>Build Your Mini-golf!</h2>
+
+      <!--<p>-->
+      <!--<strong>middle click + drag</strong>: rotate<br>-->
+      <!--<strong>right click + drag</strong>: pan<br>-->
+
+      <!--</p>-->
+
+      <div class="radio-tab-group">
+	<div class="radio-tab">
+	  <input type="radio" name="radioTabTest" value="1" id="toolSelect" onchange="toolUpdate()" checked />
+	  <label for="toolSelect">Select</label>
+	  <div class="content">
+
+	    <div>
+	      <label for="toolSelectHeight">Height</label>
+	      <input type="range" id="toolSelectHeight" name="volume" min="1" max="10" oninput="toolAdjustHeight()">
+	      <input type="num" id="toolSelectHeightText" value="5">
+	    </div>
+
+	    <br>
+	    <div>
+	      <input type='button' id='btnSelectAll' value='Select All' onclick='selectAll()'>
+	    </div>
+	    <br>
+	    <div>
+	      <input type='button' id='btnSelectBorder' value='Select Border' onclick='selectBorder()'>
+	    </div>
+	    <br>
+	    <div>
+	      <input type='button' id='btnDeselectAll' value='Deselect All' onclick='deselectAll()'>
+	    </div>
+
+	    <strong>click</strong>: select<br>
+	    <strong>click again</strong>: deselect<br>
+	    <strong>shift</strong>: select an area<br>
+	    <br>
+
+	  </div>
+	</div>
+	<div class="radio-tab">
+	  <input type="radio" name="radioTabTest" value="3" id="toolHole" onchange="toolUpdate()" />
+	  <label for="toolHole">Hole/Hill </label>
+	  <div class="content">
+
+	    <div class="radio-tab-subgroup">
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest2" value="3" id="toolHoleHole" onchange="toolUpdate()" checked/>
+		<label for="toolHoleHole">Hole</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest2" value="3" id="toolHoleHill" onchange="toolUpdate()" />
+		<label for="toolHoleHill">Hill</label>
+	      </div>
+	    </div>
+
+	    <div class="radio-tab-subgroup">
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest3" value="3" id="toolHoleHemisphere" onchange="toolUpdate()" checked/>
+		<label for="toolHoleHemisphere">Dome</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest3" value="3" id="toolHoleCone" onchange="toolUpdate()" />
+		<label for="toolHoleCone">Cone</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest3" value="3" id="toolHolePyramid" onchange="toolUpdate()" />
+		<label for="toolHolePyramid">Pyramid</label>
+	      </div>
+	      <!--<div class="radio-tab-sub">-->
+		<!--<input type="radio" name="radioTabTest3" value="3" id="toolHoleSpiral" onchange="toolUpdate()" />-->
+		<!--<label for="toolHoleSpiral">Spiral</label>-->
+	      <!--</div>-->
+	    </div>
+
+	    <div>
+	      <label for="toolHoleWidth">Width</label>
+	      <input type="range" id="toolHoleWidth" name="volume" min="0" max="50" value="4" oninput="toolUpdate()">
+	      <input type="num" id="toolHoleWidthText" value="5">
+	    </div>
+	    <div>
+	      <label for="toolHoleDepth">Depth</label>
+	      <input type="range" id="toolHoleDepth" name="volume" min="0" max="10" oninput="toolUpdate()">
+	      <input type="num" id="toolHoleDepthText" value="7">
+	    </div>
+	    <div>
+	      <label for="toolHoleRotate">Rotate</label>
+	      <input type="range" id="toolHoleRotate" name="volume" min="0" max="360" oninput="toolUpdate()">
+	      <input type="num" id="toolHoleRotateText" value="0">
+	    </div>
+
+	    <strong>click</strong>: temporarily put (adjustable)<br>
+	    <strong>click on selected</strong>: leave it<br>
+	    <strong>click elsewhere</strong>: discard putting<br>
+
+	  </div>
+	</div>
+
+	<div class="radio-tab">
+	  <input type="radio" name="radioTabTest" value="4" id="toolSlope"  onchange="toolUpdate()"/>
+	  <label for="toolSlope">Slope</label>
+	  <div class="content">
+
+	    <div class="radio-tab-subgroup">
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest6" value="3" id="toolSlopeUp" onchange="toolUpdate()" checked/>
+		<label for="toolSlopeUp">Up</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest6" value="3" id="toolSlopeDown" onchange="toolUpdate()" />
+		<label for="toolSlopeDown">Down</label>
+	      </div>
+	    </div>
+
+	    <div class="radio-tab-subgroup">
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest4" value="3" id="toolSlopeSingle" onchange="toolUpdate()" checked/>
+		<label for="toolSlopeSingle">Single</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest4" value="3" id="toolSlopeDouble" onchange="toolUpdate()" />
+		<label for="toolSlopeDouble">Double</label>
+	      </div>
+	    </div>
+
+	    <div class="radio-tab-subgroup">
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest5" value="3" id="toolSlopeStraight" onchange="toolUpdate()" checked/>
+		<label for="toolSlopeStraight">Linear</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest5" value="3" id="toolSlopeCurve" onchange="toolUpdate()" />
+		<label for="toolSlopeCurve">Curve</label>
+	      </div>
+	    </div>
+
+	    <div>
+	      <label for="toolSlopeLength">Length</label>
+	      <input type="range" id="toolSlopeLength" name="volume" min="1" max="60" oninput="toolUpdate()">
+	      <input type="num" id="toolSlopeLengthText" value="20">
+	    </div>
+	    <div>
+	      <label for="toolSlopeWidth">Width</label>
+	      <input type="range" id="toolSlopeWidth" name="volume" min="1" max="20" oninput="toolUpdate()">
+	      <input type="num" id="toolSlopeWidthText" value="10">
+	    </div>
+	    <div>
+	      <label for="toolSlopeHeight">Height</label>
+	      <input type="range" id="toolSlopeHeight" name="volume" min="1" max="11" oninput="toolUpdate()">
+	      <input type="num" id="toolSlopeHeightText" value="4">
+	    </div>
+	    <div>
+	      <label for="toolSlopeRotate">Rotate</label>
+	      <input type="range" id="toolSlopeRotate" name="volume" min="0" max="360" oninput="toolUpdate()">
+	      <input type="num" id="toolSlopeRotateText" value="90">
+	    </div>
+
+	  </div>
+	</div>
+
+	<div class="radio-tab">
+	  <input type="radio" name="radioTabTest" value="2" id="toolTexture"  onchange="toolUpdate()"/>
+	  <label for="toolTexture">Texture</label>
+	  <div class="content">
+
+	    <div class="radio-tab-subgroup">
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest7" value="3" id="toolTextureWave" onchange="toolUpdate()" checked/>
+		<label for="toolTextureWave">Wave</label>
+	      </div>
+	      <div class="radio-tab-sub">
+		<input type="radio" name="radioTabTest7" value="3" id="toolTextureRocky" onchange="toolUpdate()" />
+		<label for="toolTextureRocky">Rocky</label>
+	      </div>
+	    </div>
+
+	    <div>
+	      <label for="toolTextureRepeat">Repeat</label>
+	      <input type="range" id="toolTextureRepeat" name="volume" min="1" max="10" oninput="toolUpdate()">
+	      <input type="num" id="toolTextureRepeatText" value="2">
+	    </div>
+	    <div>
+	      <label for="toolTextureLength">Length</label>
+	      <input type="range" id="toolTextureLength" name="volume" min="1" max="60" oninput="toolUpdate()">
+	      <input type="num" id="toolTextureLengthText" value="20">
+	    </div>
+	    <div>
+	      <label for="toolTextureWidth">Width</label>
+	      <input type="range" id="toolTextureWidth" name="volume" min="1" max="20" oninput="toolUpdate()">
+	      <input type="num" id="toolTextureWidthText" value="10">
+	    </div>
+	    <div>
+	      <label for="toolTextureHeight">Height</label>
+	      <input type="range" id="toolTextureHeight" name="volume" min="1" max="11" oninput="toolUpdate()">
+	      <input type="num" id="toolTextureHeightText" value="4">
+	    </div>
+	    <div>
+	      <label for="toolTextureRotate">Rotate</label>
+	      <input type="range" id="toolTextureRotate" name="volume" min="0" max="360" oninput="toolUpdate()">
+	      <input type="num" id="toolTextureRotateText" value="90">
+	    </div>
+
+	  </div>
+
+	</div>
+
+      </div>
+
+
+      <h3>Map</h3>
+      <label for="num_width">Width:</label>
+      <input type="number" name="num_width" id="num_width" tab-index="1" value=20></input>
+
+      <label for="num_height">Height:</label>
+      <input type="number" name="num_height" id="num_height" tab-index="1" value=30></input>
+
+      <br>
+      <br>
+      <input type='button' value='Start Over' onclick='reset();'>
+      <br>
+      <br>
+      <!--<h3>Import & Export</h3>-->
+      <br>
+      <input type='button' value='Download JSON' onclick='downloadJSON();'>
+
+      <br>
+      <br>
+      <input type='file'>
+
+      <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
+	<label for="fileinput" class="custom-file-upload">Select JSON File ...</label>
+	<input type='file' id='fileinput'>
+	<input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
+      </form>
+
+      <br>
+
+
+
+    </div>
+
+    <script src="js/three.js"></script>
+    <script src="js/OrbitControls.js"></script>
+    <script src="js/Detector.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.0.0/FileSaver.min.js"></script>
+    <script src="js/STLExporter.js"></script>
+    <script src="js/JSONReadWrite.js"></script>
+    <script src="index.js"></script>
+
+  </body>
+</html>

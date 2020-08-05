@@ -1,0 +1,193 @@
+body {
+  background-color: #f0f0f0;
+  margin: 0px;
+  overflow: hidden;
+}
+
+#widget-panel {
+  padding: 6px 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 400px;
+  background: #ffffff;
+
+}
+
+#threejs-panel {
+  padding-right: 400px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+  background-color: #dddddd;
+  border: #007bff;
+  border-radius: 4px;
+  color: #333333;
+  padding: 8px 16px;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+}
+
+.radio-tab-group {
+  min-height: 300px;
+  clear: both;
+  display: inline-block;
+  position: relative;
+  clear: both;
+}
+.radio-tab-group>div:first-child label {
+  border-radius: 4px 0 0 4px;
+}
+.radio-tab-group>div:last-child label {
+  border-radius: 0 4px 4px 0;
+}
+.radio-tab {
+  float: left;
+}
+
+.radio-tab>[type=radio] {
+  position: absolute;
+  left: -99999em;
+  top: -99999em;
+}
+.radio-tab>label {
+  cursor: pointer;
+  float: left;
+  border: 1px solid #cccccc;
+  background-color: #dddddd;
+  margin-right: -1px;
+  padding: 4px 16px;
+  position: relative;
+}
+.radio-tab>label:hover {
+  background-color: #cccccc;
+}
+.radio-tab>[type=radio]:checked ~ label {
+  background-color: #333333;
+  border-color: #333333;
+  color: #ffffff;
+  z-index: 3;
+}
+.radio-tab .content {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+}
+.radio-tab>[type=radio]:checked ~ label ~ .content {
+  z-index: 2;
+}
+
+.radio-tab-subgroup {
+  min-height: 35px;
+  clear: both;
+  display: inline-block;
+  position: relative;
+  clear: both;
+}
+.radio-tab-subgroup>div:first-child label {
+  border-radius: 4px 0 0 4px;
+}
+.radio-tab-subgroup>div:last-child label {
+  border-radius: 0 4px 4px 0;
+}
+.radio-tab-sub {
+  float: left;
+}
+
+.radio-tab-sub>[type=radio] {
+  position: absolute;
+  left: -99999em;
+  top: -99999em;
+}
+.radio-tab-sub>label {
+  cursor: pointer;
+  float: left;
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  color: #888888;
+  margin-right: -1px;
+  padding: 0px 16px;
+  position: relative;
+}
+.radio-tab-sub>label:hover {
+  background-color: #ffffff;
+  border-color: #333333;
+  color: #333333;
+}
+.radio-tab-sub>[type=radio]:checked ~ label {
+  background-color: #ffffff;
+  border-color: #666666;
+  color: #333333;
+  z-index: 1;
+}
+
+
+.radio-tab-group [type=button] {
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  color: #888888;
+  padding: 0px 16px;
+  border-radius: 4px;
+  margin-top: -25px;
+  height: 35px;
+}
+
+.radio-tab-group [type=button]:hover {
+  background-color: #333333;
+  border-color: #333333;
+  color: #ffffff;
+}
+.radio-tab-group [type=button]:focus {
+  background-color: #111111;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+.radio-tab-group label {
+  vertical-align: 5px;
+}
+.radio-tab-group [type=num] {
+  margin-top: -10px;
+  width: 30px;
+  height: 25px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  vertical-align: 5px;
+
+}
+
+.debug {
+  /*display: none;*/
+  display: inline;
+  color: #333333;
+  background-color: #fff3b5; 
+
+}
+
+input#num_width, input#num_height {
+  width: 80px;
+  display: inline-block;
+}
