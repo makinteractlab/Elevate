@@ -733,6 +733,12 @@ function onDocumentMouseDown( event ) {
 	      intersect.object.material.color.setHex( selected_color );
 	      selectedObjects.push(intersect.object);
 	      selectedObjectsHeight.push(intersect.object.scale.y*2);
+
+	      // debug information
+	      var p_col = (intersect.object.position.x - pin_width/2)/pin_width;
+	      var p_row = (intersect.object.position.z - pin_width/2)/pin_width;
+	      var p_step_val = intersect.object.scale.y*2;
+	      console.log("pin: col "+p_col.toString() + " row " + p_row.toString()+" step_val "+p_step_val.toString() + " | threejs position: ("+intersect.object.position.x.toString()+", "+intersect.object.position.y.toString()+", "+intersect.object.position.z.toString()+")");
 	    }
 	  }
 	}
