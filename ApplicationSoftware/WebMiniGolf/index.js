@@ -999,7 +999,7 @@ function downloadJSON() {
     board_data.push(p);
   }
 
-  var json = JSON.stringify({"board_width": board_width,"board_height": board_height, "board_data": board_data});
+  var json = JSON.stringify({"board_width": board_width,"board_height": board_height, "board_data_list": board_data});
 
   //Convert JSON string to BLOB.
   json = [json];
@@ -1051,7 +1051,7 @@ function loadFile() {
     var newArr = JSON.parse(lines); 
     board_height = newArr.board_height;
     board_width = newArr.board_width;
-    board_data = newArr.board_data;
+    board_data = newArr.board_data_list;
     clear_board();
     create_board();
   }
