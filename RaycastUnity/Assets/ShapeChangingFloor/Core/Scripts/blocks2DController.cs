@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 public class blocks2DController : MonoBehaviour
 {
-    Total_Board_Data totalBoardData;
+    Board_Data totalBoardData;
     string JsonBoardData;
     public int[,] blockMatrix = new int[20, 60];
 
@@ -18,11 +18,11 @@ public class blocks2DController : MonoBehaviour
     void Start()
     {
         JsonBoardData = File.ReadAllText(Application.dataPath + "/Resources/MatrixData/currentMatrix.json");
-        totalBoardData = JsonConvert.DeserializeObject<Total_Board_Data>(JsonBoardData);
+        totalBoardData = JsonConvert.DeserializeObject<Board_Data>(JsonBoardData);
 
         for (int j = 0; j < 60; j++)
             for (int i = 0; i < 20; i++)
-                blocks2DMaker.MakeBlock(new Vector2(i, j + 6), blockColor(0)); 
+                blocks2DMaker.MakeBlock(new Vector2(i, j + 6), blockColor(0));
     }
 
     public void setBlockMatrix(int i, int j, int val)
@@ -38,7 +38,7 @@ public class blocks2DController : MonoBehaviour
     void Update()
     {
         JsonBoardData = File.ReadAllText(Application.dataPath + "/Resources/MatrixData/currentMatrix.json");
-        totalBoardData = JsonConvert.DeserializeObject<Total_Board_Data>(JsonBoardData);
+        totalBoardData = JsonConvert.DeserializeObject<Board_Data>(JsonBoardData);
         int count = 0;
         for (int j = 0; j < 60; j++)
             for (int i = 0; i < 20; i++)

@@ -33,13 +33,15 @@ public class RayBasedFloor : MonoBehaviour
     public List<Vector3> pinArrayPositions = new List<Vector3>();
     private Vector3[] rayHitPoints;
     public List<GameObject> pinSimulations = new List<GameObject>();
-    private Total_Board_Data totalBoardData; // Full floor info.
-    private List<Board_Data> boardDataList = new List<Board_Data>(); // each pin info in a list.
+    private Board_Data totalBoardData; // Full floor info.
+    private List<Pin_Data> boardDataList = new List<Pin_Data>(); // each pin info in a list.
     private JsonSerializerSettings setting = new JsonSerializerSettings();
 
     [Header("Interactive settings")]
-    public Transform maskTarget;
+    public List<Transform> maskTargets;
     public bool maskTargetRows = true;
+    public float maskPadding_mm = 600; // in mm
+    private float maskPadding_m = 0;
     public bool dynamicEnvironment = false;
     public int framesPerMin = 4;
     private float secondsPerFrame = 0;
@@ -48,6 +50,9 @@ public class RayBasedFloor : MonoBehaviour
 
     [Header("Debug settings")]
     public bool debugLog = false;
+
+    [Header("JSON path")]
+    public string JSONPath = "/Resources/MatrixData/currentMatrix.json";
 
     // Start is called before the first frame update
     void Start()
@@ -101,12 +106,31 @@ public class RayBasedFloor : MonoBehaviour
                 pinArrayPositions.Add(position);
             }
         }
+
+        int numPins = pinsWidth * pinsLength;
+        rayHitPoints = new Vector3[numPins];
     }
 
     void ConvertUnits()
     {
         pinW_m = pinW_mm / 1000.0f;
         pinH_m = pinH_mm / 1000.0f;
+        maskPadding_m = maskPadding_mm / 1000.0f;
+    }
+
+    bool Mask(Vector3 position)
+    {
+        foreach (Transform maskTarget in maskTargets)
+        {
+            Vector3 currMaskPos = Vector3.Project(maskTarget.position, transform.right);
+            Vector3 currTestPos = Vector3.Project(position, transform.right);
+
+            if (Vector3.Distance(currMaskPos,currTestPos) <= maskPadding_m)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private float rayRange_low = Mathf.Infinity;
@@ -114,10 +138,20 @@ public class RayBasedFloor : MonoBehaviour
     void CastFloor()
     {
         int numPins = pinsWidth * pinsLength;
-        rayHitPoints = new Vector3[numPins];
+
         for (int p = 0; p < numPins; p++)
         {
             RaycastHit hit;
+
+            // Skip pins/rows that are meant to be masked
+            if (maskTargetRows)
+            {
+                if (Mask(pinArrayPositions[p]))
+                {
+                    continue;
+                }
+            }
+
             if (Physics.Raycast(pinArrayPositions[p], -1.0f * transform.up, out hit, Mathf.Infinity, layerMask))
             {
                 if (debugLog)
@@ -149,13 +183,13 @@ public class RayBasedFloor : MonoBehaviour
                     boardHeight = (int)Mathf.Lerp(1, pinsSteps, Mathf.InverseLerp(lowestPosition, highestPosition, relativeHeight));
                 }
                 boardHeight = (int)Mathf.Clamp(boardHeight, 0, pinsSteps);
-                boardDataList.Add(new Board_Data(i, j, boardHeight));
+                boardDataList.Add(new Pin_Data(pinsWidth-(i+1), j, boardHeight));
             }
         }
-        totalBoardData = new Total_Board_Data(pinsWidth, pinsLength, boardDataList);
+        totalBoardData = new Board_Data(pinsWidth, pinsLength, boardDataList);
 
         string JsonBoardData = JsonConvert.SerializeObject(totalBoardData, setting);
-        File.WriteAllText(Application.dataPath + "/Resources/MatrixData/raycastMatrix.json", JsonBoardData);
+        File.WriteAllText(Application.dataPath + JSONPath, JsonBoardData);
     }
 
     void InstantiatePins()
