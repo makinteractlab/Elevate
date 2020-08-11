@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tool_slope_single</title>
+    <g id="tool_slope_single" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Path-44" stroke="#000000" stroke-width="3" points="3 46.3599086 23.5146507 55 59 38.6033234 59 23.1073267 36.033357 21"></polygon>
+        <line x1="59" y1="23" x2="24" y2="55" id="Path-46" stroke="#000000" stroke-width="3"></line>
+    </g>
+</svg>

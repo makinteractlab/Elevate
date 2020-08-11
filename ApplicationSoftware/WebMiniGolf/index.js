@@ -56,6 +56,7 @@ var toolHoleShape = 0;
 var hole_width;
 var hole_depth = 5;
 var toolHoleRotation = 0;
+// Slope
 var toolSlopeUp = 1;
 var toolSlopeDouble = 0;
 var toolSlopeShape = 0;
@@ -63,7 +64,8 @@ var toolSlopeRotation = 0;
 var toolSlopeLength = 5;
 var toolSlopeWidth = 5;
 var toolSlopeHeight = 5;
-
+var toolSlopeFence = 0;
+// Texture
 var toolTextureRotation = 0;
 var toolTextureType = 0;
 var toolTextureLength = 5;
@@ -74,6 +76,21 @@ var toolTextureRepeat = 2;
 // first time run threejs
 init();
 animate();
+
+// set good default value
+document.getElementById('toolHoleWidth').value = 10;
+document.getElementById('toolHoleDepth').value = 5;
+document.getElementById('toolHoleRotate').value = 0;
+document.getElementById('toolSlopeLength').value = 20;
+document.getElementById('toolSlopeWidth').value = 8;
+document.getElementById('toolSlopeHeight').value = 5;
+document.getElementById('toolSlopeRotate').value = 90;
+document.getElementById('toolSlopeFence').value = 0;
+document.getElementById('toolTextureRepeat').value = 3;
+document.getElementById('toolTextureLength').value = 24;
+document.getElementById('toolTextureWidth').value = 16;
+document.getElementById('toolTextureHeight').value = 5;
+document.getElementById('toolTextureRotate').value = 90;
 
 toolUpdate();
 
@@ -154,6 +171,9 @@ function toolUpdate() {
 
   toolSlopeHeight = document.getElementById('toolSlopeHeight').value;
   document.getElementById('toolSlopeHeightText').value = toolSlopeHeight;
+
+  toolSlopeFence = document.getElementById('toolSlopeFence').value;
+  document.getElementById('toolSlopeFenceText').value = toolSlopeFence;
 
   // Tool Texture
   if (document.getElementById('toolTextureWave').checked) {
@@ -413,18 +433,44 @@ function isInSlope(originPos, targetPos) {
   var l = toolSlopeLength*pin_width;
   var h = toolSlopeHeight*pin_width/2;
   if (targetPosRotatedX >= originPos.x && targetPosRotatedX <= originPos.x + l && targetPosRotatedZ >= originPos.z - w/2 && targetPosRotatedZ <= originPos.z + w/2) {
+
     if (toolSlopeShape == 0) {
-      return (l - (targetPosRotatedX - originPos.x)) / l * h;
+      // linear curve
+      var pin_height = (l - (targetPosRotatedX - originPos.x)) / l * h;
+      // if at fence position
+      if ((targetPosRotatedZ <= originPos.z + w/2 && targetPosRotatedZ >= originPos.z + w/2 - pin_width/2) || (targetPosRotatedZ >= originPos.z - w/2 && targetPosRotatedZ <= originPos.z - w/2 + pin_width/2)) {
+	return pin_height + toolSlopeFence*pin_width/2;
+      }
+      return pin_height;
     } else if (toolSlopeShape == 1) {
-      return (l - (targetPosRotatedX - originPos.x)) * (l - (targetPosRotatedX - originPos.x)) / l / l * h;
+      // Parabola
+      var pin_height = (l - (targetPosRotatedX - originPos.x)) * (l - (targetPosRotatedX - originPos.x)) / l / l * h;
+      // if at fence position
+      if ((targetPosRotatedZ <= originPos.z + w/2 && targetPosRotatedZ >= originPos.z + w/2 - pin_width/2) || (targetPosRotatedZ >= originPos.z - w/2 && targetPosRotatedZ <= originPos.z - w/2 + pin_width/2)) {
+	return pin_height + toolSlopeFence*pin_width/2;
+      }
+      return pin_height;
     }
   }
+  // if double sided, then make the other half count too
   if (toolSlopeDouble) {
     if (targetPosRotatedX <= originPos.x && targetPosRotatedX >= originPos.x - l && targetPosRotatedZ <= originPos.z + w/2 && targetPosRotatedZ >= originPos.z - w/2) {
       if (toolSlopeShape == 0) {
-	return (l + (targetPosRotatedX - originPos.x)) / l * h;
+	// linear curve
+	var pin_height = (l + (targetPosRotatedX - originPos.x)) / l * h;
+	// if at fence position
+	if ((targetPosRotatedZ <= originPos.z + w/2 && targetPosRotatedZ >= originPos.z + w/2 - pin_width/2) || (targetPosRotatedZ >= originPos.z - w/2 && targetPosRotatedZ <= originPos.z - w/2 + pin_width/2)) {
+	  return pin_height + toolSlopeFence*pin_width/2;
+	}
+	return pin_height;
       } else if (toolSlopeShape == 1) {
-	return (l + (targetPosRotatedX - originPos.x)) * (l + (targetPosRotatedX - originPos.x)) / l / l * h;
+	// Parabola
+	var pin_height =  (l + (targetPosRotatedX - originPos.x)) * (l + (targetPosRotatedX - originPos.x)) / l / l * h;
+	// if at fence position
+	if ((targetPosRotatedZ <= originPos.z + w/2 && targetPosRotatedZ >= originPos.z + w/2 - pin_width/2) || (targetPosRotatedZ >= originPos.z - w/2 && targetPosRotatedZ <= originPos.z - w/2 + pin_width/2)) {
+	  return pin_height + toolSlopeFence*pin_width/2;
+	}
+	return pin_height;
       }
     }
   }

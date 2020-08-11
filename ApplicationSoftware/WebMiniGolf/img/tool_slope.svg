@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tool_slope</title>
+    <g id="tool_slope" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Path-24" stroke="#000000" stroke-width="3" points="7 44.3299146 25.887847 55 52 37.4466017 52 17.6850696 32.2652565 13 28.4215706 15.128371 26.5914391 22.5419953 22.8901849 24.9401764 19.8695424 31.1359007 15.9724583 32.8663967 13.7977874 38.1719872 9.66310542 39.672247"></polygon>
+        <polyline id="Path-25" stroke="#000000" points="52 18 46.5940093 21.7817409 44.5703014 28.9114221 41.0753105 32.2604167 39 37.160806 34.0362776 40.8721611 32.4816506 45.803144 28.4407552 48.7230528 26 55"></polyline>
+        <line x1="27" y1="23" x2="44" y2="29" id="Path-26" stroke="#000000"></line>
+        <line x1="20" y1="32" x2="39" y2="37.160806" id="Path-27" stroke="#000000"></line>
+        <line x1="14" y1="38" x2="32.4816506" y2="45.803144" id="Path-28" stroke="#000000"></line>
+    </g>
+</svg>

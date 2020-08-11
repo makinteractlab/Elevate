@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tool_hole_hole</title>
+    <g id="tool_hole_hole" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <ellipse id="Oval" stroke="#000000" stroke-width="3" cx="32.5" cy="16.5" rx="29" ry="11"></ellipse>
+        <path d="M3,21 C3,48.798317 30.3689748,71.5611186 48.8823447,51.1706815 C54.3287567,45.1720587 59.0087462,35.4386697 62,21" id="Path-45" stroke="#000000" stroke-width="3" stroke-dasharray="4,3"></path>
+        <path id="Line" d="M33.845456,9.19245531 L33.8747146,10.6921699 L34.3328222,34.1734554 L34.532,44.411 L40.5092423,33.2818368 L41.2189931,31.9603779 L43.861911,33.3798795 L43.1521602,34.7013385 L34.4659647,50.8738463 L33.2041855,53.2231066 L31.8517356,50.9248485 L22.5413556,35.1034445 L21.7806026,33.8106743 L24.366143,32.2891682 L25.126896,33.5819384 L31.533,44.468 L31.333393,34.2319727 L30.8752854,10.7506872 L30.8460267,9.2509726 L33.845456,9.19245531 Z" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>

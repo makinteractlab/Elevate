@@ -34,20 +34,12 @@
 	    <br>
 	    <div>
 	      <input type='button' id='btnSelectAll' value='Select All' onclick='selectAll()'>
-	    </div>
-	    <br>
-	    <div>
 	      <input type='button' id='btnSelectBorder' value='Select Border' onclick='selectBorder()'>
 	    </div>
 	    <br>
 	    <div>
 	      <input type='button' id='btnDeselectAll' value='Deselect All' onclick='deselectAll()'>
 	    </div>
-
-	    <strong>click</strong>: select<br>
-	    <strong>click again</strong>: deselect<br>
-	    <strong>shift</strong>: select an area<br>
-	    <br>
 
 	  </div>
 	</div>
@@ -69,12 +61,12 @@
 
 	    <div class="radio-tab-subgroup">
 	      <div class="radio-tab-sub">
-		<input type="radio" name="radioTabTest3" value="3" id="toolHoleHemisphere" onchange="toolUpdate()" checked/>
-		<label for="toolHoleHemisphere">Dome</label>
+		<input type="radio" name="radioTabTest3" value="3" id="toolHoleCone" onchange="toolUpdate()" checked/>
+		<label for="toolHoleCone">Cone</label>
 	      </div>
 	      <div class="radio-tab-sub">
-		<input type="radio" name="radioTabTest3" value="3" id="toolHoleCone" onchange="toolUpdate()" />
-		<label for="toolHoleCone">Cone</label>
+		<input type="radio" name="radioTabTest3" value="3" id="toolHoleHemisphere" onchange="toolUpdate()"/>
+		<label for="toolHoleHemisphere">Dome</label>
 	      </div>
 	      <div class="radio-tab-sub">
 		<input type="radio" name="radioTabTest3" value="3" id="toolHolePyramid" onchange="toolUpdate()" />
@@ -98,13 +90,9 @@
 	    </div>
 	    <div>
 	      <label for="toolHoleRotate">Rotate</label>
-	      <input type="range" id="toolHoleRotate" name="volume" min="0" max="360" oninput="toolUpdate()">
+	      <input type="range" id="toolHoleRotate" name="volume" min="0" max="90" oninput="toolUpdate()">
 	      <input type="num" id="toolHoleRotateText" value="0">
 	    </div>
-
-	    <strong>click</strong>: temporarily put (adjustable)<br>
-	    <strong>click on selected</strong>: leave it<br>
-	    <strong>click elsewhere</strong>: discard putting<br>
 
 	  </div>
 	</div>
@@ -167,6 +155,11 @@
 	      <input type="range" id="toolSlopeRotate" name="volume" min="0" max="360" oninput="toolUpdate()">
 	      <input type="num" id="toolSlopeRotateText" value="90">
 	    </div>
+	    <div>
+	      <label for="toolSlopeFence">Fence</label>
+	      <input type="range" id="toolSlopeFence" name="volume" min="0" max="10" oninput="toolUpdate()">
+	      <input type="num" id="toolSlopeFenceText" value="0">
+	    </div>
 
 	  </div>
 	</div>
@@ -220,24 +213,11 @@
       </div>
 
 
-      <h3>Map</h3>
-      <label for="num_width">Width:</label>
-      <input type="number" name="num_width" id="num_width" tab-index="1" value=20></input>
-
-      <label for="num_height">Height:</label>
-      <input type="number" name="num_height" id="num_height" tab-index="1" value=30></input>
-
-      <br>
-      <br>
-      <input type='button' value='Start Over' onclick='reset();'>
-      <br>
-      <br>
       <!--<h3>Import & Export</h3>-->
-      <br>
-      <input type='button' value='Download JSON' onclick='downloadJSON();'>
+      <h4>Export Map</h4>
+      <input type='button' value='Download as JSON File' onclick='downloadJSON();'>
 
-      <br>
-      <br>
+      <h4>Import Map</h4>
       <input type='file'>
 
       <form id="jsonFile" name="jsonFile" enctype="multipart/form-data" method="post">
@@ -245,6 +225,13 @@
 	<input type='file' id='fileinput'>
 	<input type='button' id='btnLoad' value='Load' onclick='loadFile();'>
       </form>
+
+      <h4>Reset Map</h4>
+      <label for="num_width">Width:</label>
+      <input type="number" name="num_width" id="num_width" tab-index="1" value=20></input>
+      <label for="num_height">Height:</label>
+      <input type="number" name="num_height" id="num_height" tab-index="1" value=30></input>
+      <input type='button' value='New Floor' onclick='reset();'>
 
       <br>
 

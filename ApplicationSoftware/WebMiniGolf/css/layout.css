@@ -49,7 +49,7 @@ input[type="file"] {
 }
 
 .radio-tab-group {
-  min-height: 300px;
+  min-height: 400px;
   clear: both;
   display: inline-block;
   position: relative;
@@ -76,7 +76,8 @@ input[type="file"] {
   border: 1px solid #cccccc;
   background-color: #dddddd;
   margin-right: -1px;
-  padding: 4px 16px;
+  /*padding: 4px 16px;*/
+  padding: 60px 16px 4px 16px;
   position: relative;
 }
 .radio-tab>label:hover {
@@ -90,7 +91,7 @@ input[type="file"] {
 }
 .radio-tab .content {
   position: absolute;
-  top: 50px;
+  top: 110px;
   left: 0;
   background: white;
   right: 0;
@@ -125,22 +126,27 @@ input[type="file"] {
 .radio-tab-sub>label {
   cursor: pointer;
   float: left;
-  border: 1px solid #cccccc;
+  /*border: 1px solid #cccccc;*/
+  border: 1px solid #333333;
   background-color: #ffffff;
-  color: #888888;
+  /*color: #888888;*/
+  color: #333333;
   margin-right: -1px;
   padding: 0px 16px;
   position: relative;
+  opacity: 0.5;
 }
 .radio-tab-sub>label:hover {
-  background-color: #ffffff;
-  border-color: #333333;
-  color: #333333;
+  opacity: 0.8;
+  /*background-color: #ffffff;*/
+  /*border-color: #333333;*/
+  /*color: #333333;*/
 }
 .radio-tab-sub>[type=radio]:checked ~ label {
-  background-color: #ffffff;
-  border-color: #666666;
-  color: #333333;
+  opacity: 1;
+  /*background-color: #ffffff;*/
+  /*border-color: #666666;*/
+  /*color: #333333;*/
   z-index: 1;
 }
 
@@ -166,8 +172,9 @@ input[type="file"] {
   color: #ffffff;
 }
 
-.radio-tab-group label {
+.radio-tab-group label:first-child {
   vertical-align: 5px;
+  width: 54px;
 }
 .radio-tab-group [type=num] {
   margin-top: -10px;
@@ -176,7 +183,6 @@ input[type="file"] {
   border: 1px solid #cccccc;
   border-radius: 4px;
   vertical-align: 5px;
-
 }
 
 .debug {
@@ -188,6 +194,91 @@ input[type="file"] {
 }
 
 input#num_width, input#num_height {
-  width: 80px;
+  width: 70px;
   display: inline-block;
+}
+
+
+
+.radio-tab [type=radio] ~ label {
+  background-size: 54px 54px;
+  background-repeat: no-repeat;
+  background-position: top 8px center;
+}
+
+.radio-tab #toolSelect[type=radio] ~ label {
+  background-image: url('/img/tool_select.svg');
+}
+.radio-tab #toolSelect[type=radio]:checked ~ label {
+  background-image: url('/img/tool_select_selected.svg');
+}
+
+.radio-tab #toolHole[type=radio] ~ label {
+  background-image: url('/img/tool_hole.svg');
+}
+.radio-tab #toolHole[type=radio]:checked ~ label {
+  background-image: url('/img/tool_hole_selected.svg');
+}
+
+.radio-tab #toolSlope[type=radio] ~ label {
+  background-image: url('/img/tool_slope.svg');
+}
+.radio-tab #toolSlope[type=radio]:checked ~ label {
+  background-image: url('/img/tool_slope_selected.svg');
+}
+
+.radio-tab #toolTexture[type=radio] ~ label {
+  background-image: url('/img/tool_texture.svg');
+}
+.radio-tab #toolTexture[type=radio]:checked ~ label {
+  background-image: url('/img/tool_texture_selected.svg');
+}
+
+.radio-tab-sub [type=radio] ~ label {
+  padding-left: 35px;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: left 8px center;
+}
+
+.radio-tab-sub #toolHoleHole[type=radio] ~ label {
+  background-image: url('/img/tool_hole_hole.svg');
+}
+.radio-tab-sub #toolHoleHill[type=radio] ~ label {
+  background-image: url('/img/tool_hole_hill.svg');
+}
+.radio-tab-sub #toolHoleCone[type=radio] ~ label {
+  background-image: url('/img/tool_hole_cone.svg');
+}
+.radio-tab-sub #toolHoleHemisphere[type=radio] ~ label {
+  background-image: url('/img/tool_hole_dome.svg');
+}
+.radio-tab-sub #toolHolePyramid[type=radio] ~ label {
+  background-image: url('/img/tool_hole_pyramid.svg');
+}
+
+.radio-tab-sub #toolSlopeUp[type=radio] ~ label {
+  background-image: url('/img/tool_slope_up.svg');
+}
+.radio-tab-sub #toolSlopeDown[type=radio] ~ label {
+  background-image: url('/img/tool_slope_down.svg');
+}
+.radio-tab-sub #toolSlopeSingle[type=radio] ~ label {
+  background-image: url('/img/tool_slope_single.svg');
+}
+.radio-tab-sub #toolSlopeDouble[type=radio] ~ label {
+  background-image: url('/img/tool_slope_double.svg');
+}
+.radio-tab-sub #toolSlopeStraight[type=radio] ~ label {
+  background-image: url('/img/tool_slope_linear.svg');
+}
+.radio-tab-sub #toolSlopeCurve[type=radio] ~ label {
+  background-image: url('/img/tool_slope_curve.svg');
+}
+
+.radio-tab-sub #toolTextureWave[type=radio] ~ label {
+  background-image: url('/img/tool_texture_wave.svg');
+}
+.radio-tab-sub #toolTextureRocky[type=radio] ~ label {
+  background-image: url('/img/tool_texture_rocky.svg');
 }

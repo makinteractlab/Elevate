@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tool_hole_hill</title>
+    <g id="tool_hole_hill" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M60,59 C60,49.6111593 47.6878306,42 32.5,42 C17.3121694,42 5,49.6111593 5,59" id="Oval" stroke="#000000" stroke-width="3" transform="translate(32.500000, 50.500000) scale(1, -1) translate(-32.500000, -50.500000) "></path>
+        <path d="M60,45 C60,38.372583 47.6878306,33 32.5,33 C17.3121694,33 5,38.372583 5,45" id="Oval-Copy" stroke="#000000" stroke-width="3" stroke-dasharray="4"></path>
+        <path d="M5,6 C5,32.3352477 30.5134511,53.9000071 47.7716772,34.5827509 C52.848841,28.8998451 57.2115431,19.6787397 60,6" id="Path-45" stroke="#000000" stroke-width="3" transform="translate(32.500000, 24.000000) scale(1, -1) translate(-32.500000, -24.000000) "></path>
+        <path id="Line-Copy" d="M32.7019073,9.32971799 L34.0010139,11.6585446 L42.944174,27.6903844 L43.6749214,29.0003493 L41.0549915,30.4618442 L40.3242441,29.1518793 L34.171,18.12 L34.1342808,28.3876039 L34.0624906,48.6160377 L34.0571671,50.1160283 L31.057186,50.1053814 L31.0625094,48.6053909 L31.1342997,28.3769571 L31.171,18.11 L24.9390676,29.0972777 L24.1990406,30.4020229 L21.5895502,28.9219689 L22.3295772,27.6172237 L31.3863038,11.649265 L32.7019073,9.32971799 Z" fill="#000000" fill-rule="nonzero"></path>
+    </g>
+</svg>
