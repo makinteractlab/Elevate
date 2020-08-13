@@ -57,7 +57,7 @@ public class stairBuilder : MonoBehaviour
     {
             GameObject stairContainer = GameObject.Find("stair container");
 
-            Vector3 controllerloc = GameObject.Find("/[CameraRig]/Controller (left)").transform.position;
+            Vector3 controllerloc = GameObject.Find("/[CameraRig]/Controller (right)").transform.position;
 
             positionX = controllerloc.x + (float)0.1;
             positionZ = controllerloc.z;
