@@ -14,6 +14,7 @@ public class simpleDraw : MonoBehaviour
     JsonSerializerSettings setting = new JsonSerializerSettings();
     //JObject init = new JObject();
     public Play play;
+    public int[] randNum;
     
     void Start()
     {
@@ -21,19 +22,28 @@ public class simpleDraw : MonoBehaviour
         setting.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
         //init["board_width"] = 20;
         //init["board_height"] = 60;
-
+        randNum = new int[20];
         for (int j = 0; j < 60; j++)
+
             for (int i = 0; i < 20; i++)
-                board_data_list.Add(new Pin_Data(i, j, (int)UnityEngine.Random.Range(1, 11)));
+                {
+                    board_data_list.Add(new Pin_Data(i, j, (int)UnityEngine.Random.Range(1, 11)));
+                }
+                
         totalBoardData = new Board_Data(20, 60, board_data_list);
     }
 
     public void stairDraw()
     {
         board_data_list.Clear();
+        for (int i = 0; i < 20; i++)
+        {
+            randNum[i] = (int)UnityEngine.Random.Range(1, 11);
+        }
+
         for (int j = 0; j < 60; j++)
             for (int i = 0; i < 20; i++)
-                board_data_list.Add(new Pin_Data(i, j, (int)UnityEngine.Random.Range(1, 11)));
+                board_data_list.Add(new Pin_Data(i, j, (randNum[i] + j) % 10 + 1));
         totalBoardData = new Board_Data(20, 60, board_data_list);
 
         string JsonBoardData = JsonConvert.SerializeObject(totalBoardData, setting);
