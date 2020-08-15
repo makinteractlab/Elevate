@@ -22,6 +22,8 @@ var cubeGeo, cubeMaterial;
 // it should keep always the same except for a new map
 // order does not matter
 var objects = [];
+// objects for indicating col 0 and row 0
+var indicators = [];
 
 // we store this to revert hover effect when the cursor left the previous one
 var lastHoverObject;
@@ -246,6 +248,8 @@ function create_board() {
     objects.push(pin);
     scene.add(pin);
   }
+
+  showStartingLine()
 }
 
 function clear_board() {
@@ -627,7 +631,7 @@ function init() {
   document.body.appendChild( container );
 
   camera = new THREE.PerspectiveCamera( 45, container.offsetWidth / window.innerHeight, 1, 10000 );
-  camera.position.set( 2000, 2500, 1000 );
+  camera.position.set( -800, 1800, -600 );
   camera.lookAt( new THREE.Vector3() );
 
   // limit effect of mouse camera manipulation in container
@@ -664,13 +668,13 @@ function init() {
   onMouseUpPosition = new THREE.Vector2();
   onGhostMove = new THREE.Vector2();
 
-  var geometry = new THREE.PlaneBufferGeometry( board_width*pin_width, board_height*pin_width );
-  geometry.translate(board_width*pin_width/2, -board_height*pin_width/2, 0);
-  geometry.rotateX( - Math.PI / 2 );
+  //var geometry = new THREE.PlaneBufferGeometry( board_width*pin_width, board_height*pin_width );
+  //geometry.translate(board_width*pin_width/2, -board_height*pin_width/2, 0);
+  //geometry.rotateX( - Math.PI / 2 );
 
-  plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
-  scene.add( plane );
-  plane.name = 'theplane';
+  //plane = new THREE.Mesh( geometry, new THREE.MeshBasicMaterial( { visible: false } ) );
+  //scene.add( plane );
+  //plane.name = 'theplane';
 
   //objects.push( plane );
 
@@ -678,15 +682,7 @@ function init() {
   create_new_board_data();
 
   // create pins according to board_data
-  for (var i = 0; i < board_data.length; i+=1) {
-    cubeMaterial = new THREE.MeshLambertMaterial( { color: pin_color} );
-    var pin = new THREE.Mesh( cubeGeo, cubeMaterial );
-    pin.translateX(board_data[i].col*pin_width + pin_width/2);
-    pin.translateZ(board_data[i].row*pin_width + pin_width/2);
-    pinSetHeight(pin, board_data[i].step_val);
-    objects.push(pin);
-    scene.add(pin);
-  }
+  create_board();
 
   // Lights
 
@@ -694,7 +690,7 @@ function init() {
   scene.add( ambientLight );
 
   var directionalLight = new THREE.DirectionalLight( 0xffffff );
-  directionalLight.position.set( 1, 0.75, 0.5 ).normalize();
+  directionalLight.position.set( -1, 0.75, -0.5 ).normalize();
   scene.add( directionalLight );
 
   renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -713,6 +709,28 @@ function init() {
 
   //
   window.addEventListener( 'resize', onWindowResize, false );
+}
+
+function showStartingLine() {
+
+  if (indicators != null) {
+    for (var i = 0; i < indicators.length; i+=1) {
+      indicators[i].dispose;
+    }
+    indicators = [];
+  }
+
+  var geometry = new THREE.PlaneBufferGeometry( 300, 300 );
+  geometry.translate(board_width/2*pin_width, 150, 0);
+  geometry.rotateX( - Math.PI / 2 );
+
+  var texture = new THREE.TextureLoader().load( '/img/arrow.png');
+  var material = new THREE.MeshBasicMaterial( { map: texture,transparent: true } );
+  plane = new THREE.Mesh( geometry, material);
+  scene.add( plane );
+
+  indicators.push(plane);
+
 }
 
 // not used
@@ -781,7 +799,7 @@ function onDocumentMouseDown( event ) {
 	      selectedObjectsHeight.push(intersect.object.scale.y*2);
 
 	      // debug information
-	      var p_col = (intersect.object.position.x - pin_width/2)/pin_width;
+	      var p_col = board_width-1-(intersect.object.position.x - pin_width/2)/pin_width;
 	      var p_row = (intersect.object.position.z - pin_width/2)/pin_width;
 	      var p_step_val = intersect.object.scale.y*2;
 	      console.log("pin: col "+p_col.toString() + " row " + p_row.toString()+" step_val "+p_step_val.toString() + " | threejs position: ("+intersect.object.position.x.toString()+", "+intersect.object.position.y.toString()+", "+intersect.object.position.z.toString()+")");
@@ -1050,7 +1068,7 @@ function downloadJSON() {
   board_data = []
 
   for (var i = 0; i < objects.length; i += 1) {
-    var p_col = (objects[i].position.x - pin_width/2)/pin_width;
+    var p_col = board_width-1 - (objects[i].position.x - pin_width/2)/pin_width;
     var p_row = (objects[i].position.z - pin_width/2)/pin_width;
     var p_step_val = objects[i].scale.y*2;
     var p = {col: p_col, row: p_row, step_val: p_step_val}
