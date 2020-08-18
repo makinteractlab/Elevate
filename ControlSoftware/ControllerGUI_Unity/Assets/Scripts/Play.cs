@@ -27,6 +27,7 @@ public class Play : MonoBehaviour
     public static SerialPort LockingSerial;
     PlayMatrix playMatrix;
 
+
     void Awake()
     {
         if(mode == "Serial")
@@ -40,12 +41,15 @@ public class Play : MonoBehaviour
         playMatrix = new PlayMatrix(BoardSerial, LockingSerial, mapWidth, mapLength, mode);
     }
 
+
     //play currentMatrix.json in Resources
     public void play()
     {
         string JsonBoardData = File.ReadAllText(Application.dataPath + JSONPath);
         JObject jobj = JObject.Parse(JsonBoardData);
         sendToQueue(jobj);
+        
+        
     }
 
     public void sendToQueue(JObject jobj)
@@ -94,6 +98,22 @@ public class Play : MonoBehaviour
             StartCoroutine(playMatrix.pinHome());
         }
     }
+
+    public void openLock()
+    {
+        if(!playMatrix.isPlaying)
+        {
+            StartCoroutine(playMatrix.openLock());
+        }
+    }
+
+    public void closeLock()
+    {
+        if(!playMatrix.isPlaying)
+        {
+            StartCoroutine(playMatrix.closeLock());
+        }
+    }
 }
 
 class PlayMatrix
@@ -125,6 +145,8 @@ class PlayMatrix
     public bool isPlaying;
     public bool firstPlay;
     public bool nextPlay;
+
+    public int recieveCounter;
 
     public PlayMatrix(SerialPort BoardSerial, SerialPort LockingSerial, int mapWidth, int mapLength, string mode)
     {
@@ -281,6 +303,26 @@ class PlayMatrix
         }
     }
 
+    public IEnumerator openLock()
+    {
+        for(int i = 0; i < 15; i++)
+        {
+            string s2 = "{\"id\":" + i + ",\"c\":\"on\"}\n";
+            LockingSerial.Write(s2);
+            yield return new WaitForSeconds(delayTime4 / 1000f);
+        }
+    }
+
+    public IEnumerator closeLock()
+    {
+        for(int i = 0; i < 15; i++)
+        {
+            string s2 = "{\"id\":" + i + ",\"c\":\"off\"}\n";
+            LockingSerial.Write(s2);
+            yield return new WaitForSeconds(delayTime4 / 1000f);
+        }
+    }
+
     public IEnumerator playSerial(JObject jobj)
     {
         while(isPlaying)
@@ -358,7 +400,9 @@ class PlayMatrix
                             do
                             {
                                 pinFin = BoardSerial.ReadChar();
+                                
                                 MonoBehaviour.print(pinFin);
+                                
                                 yield return new WaitForSeconds(0.01f);
                             }
                             while(pinFin != 'a');
@@ -427,7 +471,17 @@ class PlayMatrix
                     do
                     {
                         pinFin = BoardSerial.ReadChar();
-                        MonoBehaviour.print(pinFin);
+                        if(recieveCounter == 4) 
+                        {
+                            recieveCounter =0;
+                        }
+                        else
+                        {
+                            recieveCounter ++;
+                            MonoBehaviour.print(recieveCounter);
+
+                        }
+                        //MonoBehaviour.print(pinFin);
                         yield return new WaitForSeconds(0.01f);
                     }
                     while(pinFin != 'a');

@@ -15,6 +15,7 @@ public class simpleDraw : MonoBehaviour
     //JObject init = new JObject();
     public Play play;
     public int[] randNum;
+
     
     void Start()
     {
@@ -27,7 +28,9 @@ public class simpleDraw : MonoBehaviour
 
             for (int i = 0; i < 20; i++)
                 {
-                    board_data_list.Add(new Pin_Data(i, j, (int)UnityEngine.Random.Range(1, 11)));
+                    //board_data_list.Add(new Pin_Data(i, j, (int)UnityEngine.Random.Range(1, 11)));
+                    board_data_list.Add(new Pin_Data(i, j, 10));
+
                 }
                 
         totalBoardData = new Board_Data(20, 60, board_data_list);
@@ -42,8 +45,21 @@ public class simpleDraw : MonoBehaviour
         }
 
         for (int j = 0; j < 60; j++)
+        {
             for (int i = 0; i < 20; i++)
-                board_data_list.Add(new Pin_Data(i, j, (randNum[i] + j) % 10 + 1));
+            {
+                //board_data_list.Add(new Pin_Data(i, j, (randNum[i] + j) % 10 + 1));
+                if(j<4) 
+                {
+                    board_data_list.Add(new Pin_Data(i, j, 10));
+                }
+                else 
+                {
+                    board_data_list.Add(new Pin_Data(i, j, 0));
+                }
+                //board_data_list.Add(new Pin_Data(i, j, 10));
+            }
+        }
         totalBoardData = new Board_Data(20, 60, board_data_list);
 
         string JsonBoardData = JsonConvert.SerializeObject(totalBoardData, setting);
