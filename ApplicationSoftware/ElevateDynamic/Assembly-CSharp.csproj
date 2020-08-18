@@ -63,11 +63,109 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballGroupAttribute.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\AmbientOcclusionComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\BloomComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\BuiltinDebugViewsComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\ChromaticAberrationComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\ColorGradingComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\DepthOfFieldComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\DitheringComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\EyeAdaptationComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\FogComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\FxaaComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\GrainComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\MotionBlurComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\ScreenSpaceReflectionComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\TaaComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\UserLutComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Components\VignetteComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\AmbientOcclusionModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\AntialiasingModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\BloomModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\BuiltinDebugViewsModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\ChromaticAberrationModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\ColorGradingModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\DepthOfFieldModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\DitheringModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\EyeAdaptationModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\FogModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\GrainModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\MotionBlurModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\ScreenSpaceReflectionModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\UserLutModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Models\VignetteModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingBehaviour.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingComponent.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingContext.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingModel.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\PostProcessingProfile.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\ColorGradingCurve.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
+    <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
+    <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Resources\StatisticsRecorder.cs" />
+    <Compile Include="Assets\Scripts\Hand.cs" />
+    <Compile Include="Assets\Scripts\Interactable.cs" />
+    <Compile Include="Assets\Scripts\JSONSaveAndLoad.cs" />
+    <Compile Include="Assets\Scripts\JsonIO.cs" />
+    <Compile Include="Assets\Scripts\JsonIOEditor.cs" />
+    <Compile Include="Assets\Scripts\PinObject.cs" />
     <Compile Include="Assets\Scripts\Play.cs" />
     <Compile Include="Assets\Scripts\ShaderControl.cs" />
+    <Compile Include="Assets\Scripts\SwitchCam.cs" />
     <Compile Include="Assets\Scripts\WriteMatrix.cs" />
+    <Compile Include="Assets\Scripts\blocks2DController.cs" />
+    <Compile Include="Assets\Scripts\blocks2DMaker.cs" />
+    <Compile Include="Assets\Scripts\simpleDraw.cs" />
+    <Compile Include="Assets\ShapeChangingFloor\Scenes\RaycastFloor\Scripts\RayBasedFloor.cs" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\GrainGen.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
+    <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\UI\CurveBackground.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\BuiltinDebugViews.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\LutGen.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\EyeHistogram.compute" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeCompute.compute" />
     <None Include="Assets\JsonDotNet\link.xml" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramRender.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceRaytrace.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Tonemapping.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\ParadeRender.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />
+    <None Include="Assets\PostProcessing\Resources\Bluenoise64\COPYING.txt" />
+    <None Include="Assets\PostProcessing\Editor Resources\UI\Trackball.shader" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformRender.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Common.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\VectorscopeRender.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Uber.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\Cactus on Fire\Lowpoly Environment Pack\Shaders\TopDown.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\TAA.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Blit.shader" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.cginc" />
+    <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
+    <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.cginc" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.3f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -252,7 +350,7 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.3f1/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.3f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -609,31 +707,31 @@
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.3f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>/Users/justinmoon/Documents/Unity/ElevateDynamic/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
