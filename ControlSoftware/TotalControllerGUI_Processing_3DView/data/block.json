@@ -1,0 +1,86 @@
+{
+  "board_data": [
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 13
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 13
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 14
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 14
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 15
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 15
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 15
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 15
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 15
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 15
+    }
+  ],
+  "board_height": 60,
+  "board_width": 20
+}
