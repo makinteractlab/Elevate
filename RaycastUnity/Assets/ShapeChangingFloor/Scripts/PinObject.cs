@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PinObject : MonoBehaviour
 {
-    public int col;
-    public int step_val;
-    public int row;
+    public Pin_Data information;
+    public float step_height;
+
+    public Vector3 startPosition;
 
     void Start()
     {
@@ -18,21 +19,23 @@ public class PinObject : MonoBehaviour
     {
     }
 
-    public void UpdateColRow(int c, int r)
+    public void Instantiate(Pin_Data currPin, Vector3 start, float stepHeight)
     {
-        col = c;
-        row = r;
+        information = currPin;
+        startPosition = start;
+        step_height = stepHeight;
+        UpdatePosition();
     }
 
-    public void UpdateRawPosition(Vector3 position, float low, float high, int pinSteps)
+    public void UpdateStep(int step)
     {
-        float yVal = position.y;
-        float t = Mathf.InverseLerp(low, high, yVal);
-        float rawRemap_y = Mathf.Lerp(0.0f, (float)pinSteps, t);
-        //Debug.Log("Hmmm " + rawRemap_y.ToString());
-        int stepVal = (int)rawRemap_y;
-        step_val = stepVal;
-
-        transform.position = new Vector3(position.x, stepVal * 0.15f / (float)pinSteps, position.z);
+        information.step_val = step;
+        UpdatePosition();
     }
+
+    public void UpdatePosition()
+    {
+        transform.position = new Vector3(startPosition.x, startPosition.y + information.step_val * step_height, startPosition.z);
+    }
+    
 }

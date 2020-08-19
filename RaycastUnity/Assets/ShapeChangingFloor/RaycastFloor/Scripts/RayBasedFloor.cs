@@ -20,13 +20,15 @@ public class RayBasedFloor : MonoBehaviour
     private float pinW_m = 0;
     public float pinH_mm = 150; // in mm
     private float pinH_m = 0;
+    public float stepH_m = 0;
 
+    //public float lowestPosition = 0f;
+    //public float highestPosition = 2f;
     [Header("Remapping specifications")]
-    public float lowestPosition = 0f;
-    public float highestPosition = 2f;
-    public bool adaptiveRange = false;
-    public bool clipHeight = false;
+    public bool clipHeight = true;
     public Transform relativeTo;
+    public Transform castFromHeight;
+    private bool adaptiveRange = false;
 
     [Header("Pins")]
     public GameObject pinPrefab;
@@ -50,6 +52,7 @@ public class RayBasedFloor : MonoBehaviour
 
     [Header("Debug settings")]
     public bool debugLog = false;
+    public bool debugDraw = false;
 
     [Header("JSON path")]
     public string JSONPath = "/Resources/MatrixData/currentMatrix.json";
@@ -102,7 +105,8 @@ public class RayBasedFloor : MonoBehaviour
         {
             for(int i = 0; i < pinsWidth; i++)
             {
-                Vector3 position = transform.position + pinW_m * (i * transform.localScale.z * transform.forward + j * transform.localScale.x * transform.right);
+                Vector3 position = relativeTo.position + pinW_m * (i * transform.localScale.z * transform.forward + j * transform.localScale.x * transform.right);
+                position = new Vector3(position.x, castFromHeight.position.y, position.z);
                 pinArrayPositions.Add(position);
             }
         }
@@ -115,6 +119,7 @@ public class RayBasedFloor : MonoBehaviour
     {
         pinW_m = pinW_mm / 1000.0f;
         pinH_m = pinH_mm / 1000.0f;
+        stepH_m = pinH_m / pinsSteps;
         maskPadding_m = maskPadding_mm / 1000.0f;
     }
 
@@ -134,7 +139,7 @@ public class RayBasedFloor : MonoBehaviour
     }
 
     private float rayRange_low = Mathf.Infinity;
-    private float rayRange_high = 0.0f;
+    private float rayRange_high = -100.0f;
     void CastFloor()
     {
         int numPins = pinsWidth * pinsLength;
@@ -156,7 +161,8 @@ public class RayBasedFloor : MonoBehaviour
             {
                 if (debugLog)
                     Debug.Log("A hit has been made.");
-                Debug.DrawRay(pinArrayPositions[p], -1.0f * transform.up * hit.distance, Color.yellow, layerMask);
+                if (debugDraw)
+                    Debug.DrawRay(pinArrayPositions[p], -1.0f * transform.up * hit.distance, Color.yellow, layerMask);
                 rayHitPoints[p] = hit.point;
                 rayRange_high = Mathf.Max(rayRange_high, rayHitPoints[p].y);
                 rayRange_low = Mathf.Min(rayRange_low, rayHitPoints[p].y);
@@ -179,10 +185,10 @@ public class RayBasedFloor : MonoBehaviour
                 else
                 {
                     if (clipHeight)
-                        relativeHeight = Mathf.Clamp(relativeHeight, lowestPosition, highestPosition);
-                    boardHeight = (int)Mathf.Lerp(1, pinsSteps, Mathf.InverseLerp(lowestPosition, highestPosition, relativeHeight));
+                        relativeHeight = Mathf.Clamp(relativeHeight, 0f, pinH_m);
+                    boardHeight = (int)Mathf.Lerp(1, pinsSteps, Mathf.InverseLerp(0f, pinH_m, relativeHeight));
                 }
-                boardHeight = (int)Mathf.Clamp(boardHeight, 0, pinsSteps);
+                
                 boardDataList.Add(new Pin_Data(pinsWidth-(i+1), j, boardHeight));
             }
         }
@@ -194,19 +200,18 @@ public class RayBasedFloor : MonoBehaviour
 
     void InstantiatePins()
     {
-        int numPins = pinsWidth * pinsLength;
 
-        for(int i = 0; i < pinsWidth; i++)
+        for (int j = 0; j < pinsLength; j++)
         {
-            for (int j = 0; j < pinsLength; j++)
+            for (int i = 0; i < pinsWidth; i++)
             {
                 GameObject pin_Curr = Instantiate(pinPrefab);
                 //pin_Curr.transform.position = rayHitPoints[p];
-                int p = i + j * pinsWidth;
-                pin_Curr.GetComponent<PinObject>().UpdateRawPosition(rayHitPoints[p], rayRange_low, rayRange_high, pinsSteps);
-                pin_Curr.GetComponent<PinObject>().UpdateColRow(i, j);
+                int p = j * pinsWidth + i;
+                PinObject pinObj = pin_Curr.GetComponent<PinObject>();
+                Vector3 pos = relativeTo.position + pinW_m * (i * transform.localScale.z * transform.forward + j * transform.localScale.x * transform.right);
+                pinObj.Instantiate(boardDataList[p], pos, stepH_m);
                 pin_Curr.transform.parent = transform;
-
                 pinSimulations.Add(pin_Curr);
             }
         }
@@ -215,6 +220,14 @@ public class RayBasedFloor : MonoBehaviour
     void UpdatePins()
     {
 
+        for (int j = 0; j < pinsLength; j++) 
+        {
+            for (int i = 0; i < pinsWidth; i++)
+            {
+                int p = j * pinsWidth + i;
+                pinSimulations[p].GetComponent<PinObject>().UpdateStep(boardDataList[p].step_val);
+            }
+        }
     }
-    
 }
+

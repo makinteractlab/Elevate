@@ -73,9 +73,9 @@ public class JsonIO : MonoBehaviour
             pin.transform.parent = pins.transform;
             pin.transform.localScale = new Vector3 (0.03f, 0.015f * pinData.step_val, 0.03f);
             pin.transform.localPosition = new Vector3 (pin.transform.localPosition.x, 0.015f * pinData.step_val / 2f, pin.transform.localPosition.z);
-            pin.GetComponent<PinObject>().col = pinData.col;
-            pin.GetComponent<PinObject>().row = pinData.row;
-            pin.GetComponent<PinObject>().step_val = pinData.step_val;
+            pin.GetComponent<PinObject>().information.col = pinData.col;
+            pin.GetComponent<PinObject>().information.row = pinData.row;
+            pin.GetComponent<PinObject>().information.step_val = pinData.step_val;
         }
     }
 
