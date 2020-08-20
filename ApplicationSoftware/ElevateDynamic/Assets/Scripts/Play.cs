@@ -464,7 +464,7 @@ class PlayMatrix
 }
 
 
-class Pin_Data
+public class Pin_Data
 {
     public int col;
     public int row;
@@ -478,7 +478,7 @@ class Pin_Data
     }
 }
 
-class Board_Data
+public class Board_Data
 {
     public int board_width;
     public int board_height;

@@ -295,6 +295,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
@@ -690,6 +693,22 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{5304666B-CC0F-7CC5-175A-A502A76A80BE}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Input_Editor.csproj">
+      <Project>{43FCA2F9-2371-1AD6-D77F-3065393DE98E}</Project>
+      <Name>SteamVR_Input_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{57BF3FB9-93DE-F0FC-3043-6D71F59F0BB7}</Project>
+      <Name>SteamVR_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR.csproj">
+      <Project>{300B3DBC-FE01-2AF5-FDFA-CD88D40E6ADB}</Project>
+      <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
+      <Project>{510C9D7B-16F9-C4F7-609C-AC4B5224C7A9}</Project>
+      <Name>SteamVR_Windows_EditorHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

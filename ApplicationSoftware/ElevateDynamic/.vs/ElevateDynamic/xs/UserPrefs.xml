@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{5304666B-CC0F-7CC5-175A-A502A76A80BE}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WriteMatrix.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/JsonIO_J.cs">
     <Files>
-      <File FileName="Assets/Scripts/WriteMatrix.cs" Line="243" Column="86" />
-      <File FileName="Assets/Scripts/Play.cs" Line="259" Column="15" />
-      <File FileName="Assets/Scripts/SwitchCam.cs" Line="25" Column="18" />
+      <File FileName="Assets/Scripts/WriteMatrix.cs" Line="277" Column="43" />
+      <File FileName="Assets/Scripts/SwitchCam.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Hand.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PinObject.cs" Line="5" Column="25" />
+      <File FileName="Assets/Scripts/JsonIO_J.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="bf6837d2-39a9-4d18-a5c2-3d49b37303e4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0fc65e00-62a8-462f-b601-4a2608813b0b" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

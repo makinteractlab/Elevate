@@ -112,9 +112,9 @@
     <Compile Include="Assets\Scripts\Hand.cs" />
     <Compile Include="Assets\Scripts\Interactable.cs" />
     <Compile Include="Assets\Scripts\JSONSaveAndLoad.cs" />
-    <Compile Include="Assets\Scripts\JsonIO.cs" />
     <Compile Include="Assets\Scripts\JsonIOEditor.cs" />
-    <Compile Include="Assets\Scripts\PinObject.cs" />
+    <Compile Include="Assets\Scripts\JsonIO_J.cs" />
+    <Compile Include="Assets\Scripts\PinObject_J.cs" />
     <Compile Include="Assets\Scripts\Play.cs" />
     <Compile Include="Assets\Scripts\ShaderControl.cs" />
     <Compile Include="Assets\Scripts\SwitchCam.cs" />
@@ -122,7 +122,6 @@
     <Compile Include="Assets\Scripts\blocks2DController.cs" />
     <Compile Include="Assets\Scripts\blocks2DMaker.cs" />
     <Compile Include="Assets\Scripts\simpleDraw.cs" />
-    <Compile Include="Assets\ShapeChangingFloor\Scenes\RaycastFloor\Scripts\RayBasedFloor.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\GrainGen.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
@@ -351,6 +350,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Assets/JsonDotNet/Assemblies/Standalone/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.3f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -734,7 +736,24 @@
       <HintPath>/Users/justinmoon/Documents/Unity/Elevate/ApplicationSoftware/ElevateDynamic/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="SteamVR_Input_Editor.csproj">
+      <Project>{43FCA2F9-2371-1AD6-D77F-3065393DE98E}</Project>
+      <Name>SteamVR_Input_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{57BF3FB9-93DE-F0FC-3043-6D71F59F0BB7}</Project>
+      <Name>SteamVR_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR.csproj">
+      <Project>{300B3DBC-FE01-2AF5-FDFA-CD88D40E6ADB}</Project>
+      <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
+      <Project>{510C9D7B-16F9-C4F7-609C-AC4B5224C7A9}</Project>
+      <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

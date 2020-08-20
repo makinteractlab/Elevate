@@ -21,6 +21,9 @@ public class SwitchCam : MonoBehaviour
 
     }
 
+
+    //TODO when switching cameras I need to also switch, reference points for the foot tracking
+
     // Update is called once per frame
     void Update()
     {

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
  
-[CustomEditor(typeof(JsonIO))]
+[CustomEditor(typeof(JsonIO_J))]
 public class JsonIOEditor : Editor
 {
   public override void OnInspectorGUI()
   {
     DrawDefaultInspector();
-    JsonIO jsonIO = (JsonIO)target;
+        JsonIO_J jsonIO = (JsonIO_J)target;
  
     GUILayout.Label("JSON file:");
     GUILayout.BeginHorizontal();
