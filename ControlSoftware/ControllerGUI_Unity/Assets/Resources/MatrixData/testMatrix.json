@@ -1,0 +1,456 @@
+{
+  "board_height": 60,
+  "board_data_list": [
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 2
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 2
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 2
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 2
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 2
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 2
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 5
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 5
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 5
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 5
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 5
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 5
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 7
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 7
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 7
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 7
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 8
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 8
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 10
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 10
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 12
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 13
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 13
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 13
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 13
+    },
+    {
+      "col": 7,
+      "step_val": 5,
+      "row": 14
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 14
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 16
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 16
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 16
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 17
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 18
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 18
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 18
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 20
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 21
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 21
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 21
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 22
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 22
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 24
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 24
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 26
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 27
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 27
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 27
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 27
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 29
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 29
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 29
+    },
+    {
+      "col": 16,
+      "step_val": 5,
+      "row": 29
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 30
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 31
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 31
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 31
+    },
+    {
+      "col": 15,
+      "step_val": 5,
+      "row": 31
+    },
+    {
+      "col": 16,
+      "step_val": 5,
+      "row": 31
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 33
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 33
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 33
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 35
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 36
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 38
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 39
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 39
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 40
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 40
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 41
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 42
+    },
+    {
+      "col": 9,
+      "step_val": 5,
+      "row": 44
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 45
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 45
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 45
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 45
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 46
+    },
+    {
+      "col": 8,
+      "step_val": 5,
+      "row": 48
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 48
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 48
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 50
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 51
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 51
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 52
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 53
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 55
+    },
+    {
+      "col": 12,
+      "step_val": 5,
+      "row": 55
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 55
+    },
+    {
+      "col": 10,
+      "step_val": 5,
+      "row": 57
+    },
+    {
+      "col": 11,
+      "step_val": 5,
+      "row": 57
+    },
+    {
+      "col": 13,
+      "step_val": 5,
+      "row": 57
+    }
+  ],
+  "board_width": 20
+}

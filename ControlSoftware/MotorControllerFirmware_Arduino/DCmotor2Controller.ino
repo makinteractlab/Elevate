@@ -1,101 +1,149 @@
-int hallSensor2 = A1;
-int switchPin2 = 9;
-int motor2APin = 4;
-int motor2BPin = 5;
+const int hallSensor2 = A7;
 
-bool two_numChecker = true;
-int two_val = LOW;
-int two_hallVal = 0;
-int two_stepCounter;
-bool two_isPosition;
-bool two_raisingChecker = false;
-bool two_isPlay = false;
-int two_playChecker = 3;
+int M2_switch = LOW; // swith clicked: HIGH, not clikced: LOW
+int M2_hallVal = 0; // Value of hallSensor
+int M2_stepCounter; // Counting of pin moving (minimum: 1)
+bool M2_polarity; // Current Magnet's polarity (first magnet is True)
+bool M2_raisingChecker = false; // Check the signal of raising
+bool M2_raisingState = false; // Current state of raising
+int M2_magnetState = 0; // State of magnet 
+int M2_playChecker = 3; // State of playing 0: start, 1:moveUp, 2: moveDown, 3:Done
+int M2_errorCounter = 0; // Counting error moment;
 
-void two_moveDown(){
-  digitalWrite(motor2APin, HIGH);
-  digitalWrite(motor2BPin, LOW);
+void M2_moveDown(){
+  digitalWrite(M2APin, HIGH);
+  digitalWrite(M2BPin, LOW);
 }
 
-void two_moveUp(){
-  digitalWrite(motor2APin, LOW);
-  digitalWrite(motor2BPin, HIGH);
+void M2_moveUp(){
+  digitalWrite(M2APin, LOW);
+  digitalWrite(M2BPin, HIGH);
 }
 
-void two_moveStop(){
-  digitalWrite(motor2APin, LOW);
-  digitalWrite(motor2BPin, LOW);
+void M2_moveStop(){
+  digitalWrite(M2APin, LOW);
+  digitalWrite(M2BPin, LOW);
 }
 
-void two_moveHome(){
-  if(two_val == LOW)two_moveDown();
-  if(two_val == HIGH)two_moveStop();
+void M2_moveHome(){
+  if(M2_switch == LOW) M2_moveDown();
+  else M2_moveStop();
 }
 
-bool two_hallChecker(){
-  int two_hallVal = two_hallValue();
-  if(two_hallVal <= 300) return true; //Serial.println("oddNum");
-  if(two_hallVal >= 650) return false; //Serial.println("evenNum");
+void M2_magnetOn(){
+  digitalWrite(MAG2Pin, HIGH);
 }
 
-void two_homeChecker(){
-  two_val =  digitalRead(switchPin2);
+void M2_magnetOff(){
+  digitalWrite(MAG2Pin, LOW);
+}
 
-  if(two_val == HIGH){
-    //Serial.println("home");
-    two_stepCounter = 1;
-    two_isPosition = true;
-    two_raisingChecker = true;
+int M2_hallValue(){
+  return analogRead(hallSensor2);
+}
+
+bool M2_hallPolarity(){
+  M2_hallVal = M2_hallValue();
+  if(M2_hallVal <= 400) return true; //if "id" is 4 or 10, minimun value is 350, else 400
+  if(M2_hallVal >= 620) return false;
+  if(M2_stepCounter % 2 == 1) return true;
+  return false;
+}
+
+void M2_stepMove(int M2_stepNum){
+  M2_switch =  digitalRead(S2Pin);
+  if(M2_switch == HIGH){
+    M2_stepCounter = 1;
+    M2_polarity = true;
+    M2_raisingChecker = true;
   }
-}
-
-int two_hallValue(){
-    two_hallVal = analogRead(hallSensor2);
-    return two_hallVal;
-}
-
-void two_stepMove(int two_stepNum){
-  two_homeChecker();
-  if(!two_raisingChecker){
-     two_moveHome();
+  
+  if(!M2_raisingChecker){
+     M2_moveHome();
   }
   else{
-     two_moveUp();
-    bool two_hallVal = two_hallChecker();
-    if(two_isPosition != two_hallVal){
-       two_stepCounter++;
-       two_isPosition = two_hallVal;
-       //Serial.println(two_stepCounter);
+    M2_moveUp();
+    if(M2_polarity != M2_hallPolarity()){
+       M2_stepCounter++;
+       M2_polarity = M2_hallPolarity();
     }
-    if(two_stepCounter == two_stepNum){
-       two_raisingChecker = false;
+    if(M2_stepCounter == M2_stepNum){
+       M2_raisingChecker = false;
     }
   }
 }
 
-// when we give the input, we have to change playChecker = 0;
-void two_play(int two_stepNum){
-  if(two_playChecker < 3 && two_stepNum > 1) {
-    two_stepMove(two_stepNum);
-    if(two_isPlay != two_raisingChecker){
-      two_playChecker++;
-      two_isPlay = two_raisingChecker;
+void M2_play(int M2_stepNum, int M2_previousNum){
+  if(M2_stepNum == M2_previousNum){
+    M2_playChecker = 3;
+  }
+  else if(M2_stepNum > M2_previousNum){
+    if(M2_playChecker < 3){
+      if(M2_stepNum == 1) M2_playChecker = 3;
+      else{
+        M2_stepMove(M2_stepNum);
+        M2_errorCounter++;
+        if(M2_raisingState != M2_raisingChecker){
+          M2_playChecker++;
+          M2_raisingState = M2_raisingChecker;
+        }
+        if(M2_playChecker == 1 && M2_errorCounter > 32000){
+          M2_playChecker++;
+          M2_raisingChecker = false;
+          M2_raisingState = false;
+        }
+      }
     }
+    else M2_moveHome();
   }
-  else if(two_playChecker < 3 && two_stepNum == 1) {
-    two_playChecker = 3;
-    two_moveStop();
+  else{
+    if(M2_playChecker < 3){
+      if(M2_stepNum == 1){
+        M2_stepMove(M2_previousNum + 1);
+        if(M2_raisingState != M2_raisingChecker){
+          M2_playChecker++;
+          if(M2_playChecker == 1 && M2_magnetState == 0){
+            M2_magnetState ++;
+            M2_magnetOn();
+          }
+          if(M2_playChecker == 3 && M2_magnetState == 1){
+            M2_magnetState++;
+            M2_magnetOff();
+          }
+          M2_raisingState = M2_raisingChecker;
+        }
+      }         
+      else{
+        if(M2_magnetState == 1) M2_stepMove(M2_previousNum + 1);
+        else M2_stepMove(M2_stepNum);
+
+        if(M2_raisingState != M2_raisingChecker){
+          M2_playChecker++;
+          if(M2_playChecker == 1 && M2_magnetState == 0){
+            M2_magnetState ++;
+            M2_magnetOn();
+          }
+          if(M2_playChecker == 3 && M2_magnetState == 1){
+            M2_playChecker = 1;
+            M2_magnetState++;
+            M2_magnetOff();
+          }
+          M2_raisingState = M2_raisingChecker;
+        }
+      }
+    }
+    else M2_moveHome();
   }
-  else two_moveStop();
-  //Serial.println(two_playChecker);
 }
 
-void two_reset(){
-  two_playChecker = 0;
-  two_isPlay = false;
-  two_raisingChecker = false;
+void M2_reset(){
+  M2_magnetState = 0;
+  M2_playChecker = 0;
+  M2_raisingState = false;
+  M2_raisingChecker = false;
+  M2_errorCounter = 0;
 }
 
-int two_playCheck(){
-  return two_playChecker;
+int M2_playCheck(){
+  return M2_playChecker;
 }
